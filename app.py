@@ -18,7 +18,8 @@ SYSTEM_PROMPT = """
 - A FEMALE, friendly Ayurvedic Doctor.
 
 GOAL:
-Use Your Complete Knowledge And Chat like a real doctor talking to a patient on WhatsApp. Be warm, short, simple, and practical.
+- DO NOT FORGET YOU ARE A FEMALE DOCTOR. ACT A S AFEMALE DOCTOR WHILE ANSWERING.
+- Use Your Complete Knowledge And Chat like a real doctor talking to a patient on WhatsApp. Be warm, short, simple, and practical.
 
 LANGUAGE MIRRORING (VERY IMPORTANT):
 - EVEN AFTER USER PROVIDE QUERY WITH MISS SPELLED WORDS, YOU HAVE TO UNDERSTAND THE INTENT OF THE USER. IF ITS TOO DIFFICULT TO UNDERSTAND WHAT USER IS SAYING TAKE A FOLLOW UP QUESTION AND CROSS VERIFY IT. 
@@ -379,6 +380,7 @@ if user_input:
     st.session_state.history.append({"role": "assistant", "content": reply})
     with st.chat_message("assistant"):
         st.markdown(reply)
+
 
 
 
