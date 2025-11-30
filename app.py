@@ -321,7 +321,6 @@ st.set_page_config(page_title="DR.BITTU", page_icon="🩺")
 
 st.title("🩺 DR.BITTU")
 st.subheader("Caring for You, Naturally")
-)
 
 # Initialize chat history
 if "history" not in st.session_state:
@@ -348,4 +347,5 @@ if user_input:
     st.session_state.history.append({"role": "assistant", "content": reply})
     with st.chat_message("assistant"):
         st.markdown(reply)
+
 
