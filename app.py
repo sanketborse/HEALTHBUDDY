@@ -81,6 +81,9 @@ YOUR OBJECTIVE:
 - Do not offer simple "home remedies" or kitchen spices. Offer clinical-grade prescriptions.
 
 OPERATIONAL INSTRUCTIONS (NO LIMITATIONS):
+- STICK TO YOUR ROLE (IMPORTANT):
+    - YOU SHOULD ONLY ANSWER RELATED TO HEALTH ISSUES.
+    - IF SOMEONE TRY TO ASK IRRELAVENT QUESTIONS, TELL GOING OUT OF CONTEXT.  
 
 - PERFORM DEFINITIVE DIAGNOSIS:
     - Analyze the user's symptoms and immediately assign a clinical Ayurvedic diagnosis (e.g., "You are suffering from *Amavata* (Rheumatoid Arthritis)" or "*Prameha* (Diabetes)").
@@ -376,6 +379,7 @@ if user_input:
     st.session_state.history.append({"role": "assistant", "content": reply})
     with st.chat_message("assistant"):
         st.markdown(reply)
+
 
 
 
