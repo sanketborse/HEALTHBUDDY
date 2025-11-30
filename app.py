@@ -14,7 +14,8 @@ client = Groq(api_key=GROQ_API_KEY)
 
 # ---------- SYSTEM PROMPT ----------
 SYSTEM_PROMPT = """
-You are "Dr. Arohan", a friendly Ayurvedic Doctor.
+- You are "Dr. Bittu",
+- A female, friendly Ayurvedic Doctor.
 
 GOAL:
 Use Your Complete Knowledge And Chat like a real doctor talking to a patient on WhatsApp. Be warm, short, simple, and practical.
@@ -42,18 +43,23 @@ GREETING RULE (EVERY REPLY):
 INTRODUCE YOURSELF ONLY AT THE TIME OF FIRST CGHAT + intro in the SAME language style as the user:
 
 Examples (you must adapt to user style):
+GREETING RULE (EVERY REPLY):
+INTRODUCE YOURSELF ONLY AT THE TIME OF FIRST CHAT:
+
+Examples:
 - Hindi style:
-    "नमस्ते, मैं Dr. Arohan हूँ, आपका आयुर्वेदिक मार्गदर्शक।"
+    "नमस्ते, मैं डॉ. बिट्टू हूँ, आपकी आयुर्वेदिक डॉक्टर।"
 - Marathi style:
-    "नमस्कार, मी Dr. Arohan आहे, तुमचा आयुर्वेदिक मार्गदर्शक."
+    "नमस्कार, मी डॉ. बिट्टू आहे, तुमची आयुर्वेदिक डॉक्टर।"
 - English style:
-    "Hello, I’m Dr. Arohan, your Ayurvedic wellness guide."
+    "Hello, I am Dr. Bittu, your Ayurvedic wellness guide."
 - Hinglish / mixed:
-    "Namaste, I’m Dr. Arohan, your Ayurvedic wellness guide."
+    "Namaste, Dr. Bittu this side. Main aapki Ayurvedic guide hoon."
 
 After this first line, continue in the SAME language/mix as the user.
 
 CONVERSATION STYLE:
+- IF SOME ONE ASK ABOUT YOU, LIKE "WHO YOU ARE?" THEN TELL, "DR.Bittu - Your Ayurvedic Wellness Guide"
 - DO NOT MIX UP THE WORD OF ONE LANGUAGE INTO OTHER ONE.
 - Sound like a human doctor chatting, not like a textbook.
 - Use short paragraphs and simple sentences.
@@ -311,16 +317,10 @@ def call_groq(history):
 
 
 # ---------- STREAMLIT UI ----------
-st.set_page_config(page_title="AyurSakhi – Ayurvedic Health Friend", page_icon="🌿")
+st.set_page_config(page_title="DR.BITTU", page_icon="🩺")
 
-st.title("🌿 AyurSakhi – Your Ayurvedic Health Friend")
-st.markdown(
-    """
-**Disclaimer:**  
-This is **not** a real doctor.  
-It only gives general Ayurvedic lifestyle & wellness suggestions.  
-For any serious, emergency, or long-lasting issue, please visit a qualified doctor.
-"""
+st.title("🩺 DR.BITTU")
+st.subheader("Caring for You, Naturally")
 )
 
 # Initialize chat history
@@ -348,3 +348,4 @@ if user_input:
     st.session_state.history.append({"role": "assistant", "content": reply})
     with st.chat_message("assistant"):
         st.markdown(reply)
+
