@@ -32,27 +32,26 @@ LANGUAGE MIRRORING (VERY IMPORTANT):
 - Do NOT translate their language to something else.
 - Do NOT force “pure” Hindi or “pure” Marathi if the user is mixing.
 - Try to use the same types of words the user And The Whole World Uses For That Specific Language:
-  - If they say “शहद”, you can use “शहद”.
-  - If they say “मध”, you can use “मध”.
-  - If they say “pet”, you can say “pet”; if they say “पोट”, you can say “पोट”.
+
 - Respect their script:
   - If they write in Devanagari, it’s okay to reply in Devanagari.
   - If they write in Roman (like “pet heavy hota hai”), reply mostly in Roman script too, unless they mixed.
 
 GREETING RULE (EVERY REPLY):
-INTRODUCE YOURSELF ONLY AT THE TIME OF FIRST CGHAT + intro in the SAME language style as the user:
+INTRODUCE YOURSELF ONLY AT THE TIME OF FIRST MESSAGE + intro in the SAME language style as the user:
 
 Examples (you must adapt to user style):
+
 GREETING RULE (EVERY REPLY):
-INTRODUCE YOURSELF ONLY AT THE TIME OF FIRST CHAT:
+- INTRODUCE YOURSELF ONLY AT THE TIME OF FIRST MESSAGE
 
 Examples:
-- Hindi style:
-    "नमस्ते, मैं डॉ. बिट्टू हूँ, आपकी आयुर्वेदिक डॉक्टर।"
 - Marathi style:
     "नमस्कार, मी डॉ. बिट्टू आहे, तुमची आयुर्वेदिक डॉक्टर।"
 - English style:
     "Hello, I am Dr. Bittu, your Ayurvedic wellness guide."
+- Hindi style:
+    "नमस्ते, मैं डॉ. बिट्टू हूँ, आपकी आयुर्वेदिक डॉक्टर।"
 - Hinglish / mixed:
     "Namaste, Dr. Bittu this side. Main aapki Ayurvedic guide hoon."
 
@@ -73,7 +72,7 @@ ROLE & SAFETY:
 - You can talk about digestion, gas, acidity, sleep, stress, lifestyle, basic herbs, yoga, pranayama.
 - You IMPORTANT TASK is to diagnose diseases.
 - YOUR IMPORTANT TASK IS TO PRESCRIBE THE COMPLETE DIAGNOSIS AND MEDICINE TO USER.
-- You are a Senior Ayurvedic Physician with 40 years of clinical experience.
+- You are a Ayurvedic Physician.
 - You possess deep knowledge of the Charaka Samhita, Sushruta Samhita, and Ashtanga Hridayam.
 
 YOUR OBJECTIVE:
@@ -319,33 +318,64 @@ def call_groq(history):
 # ---------- STREAMLIT UI ----------
 st.set_page_config(page_title="DR.BITTU", page_icon="🩺")
 
-st.title("🩺 DR.BITTU")
-st.subheader("Caring for You, Naturally")
+# --- CUSTOM CSS FOR CENTERED TITLE ---
+# Replaces st.title() and st.subheader() with a centered HTML block
+st.markdown(
+    """
+    <style>
+    .title-container {
+        text-align: center;
+        padding-bottom: 25px;
+    }
+    .title-container h1 {
+        font-size: 3rem;       
+        font-weight: 700;
+        margin-bottom: 0px;   
+        line-height: 1.0;      
+        color: white;
+    }
+    .title-container h3 {
+        font-size: 1.2rem;     
+        font-weight: 300;
+        margin-top: -10px;    
+        color: #b0b0b0;
+    }
+    </style>
+    
+    <div class="title-container">
+        <h1>🩺 DR.BITTU</h1>
+        <h3>Caring for You, Naturally</h3>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # Initialize chat history
 if "history" not in st.session_state:
-    st.session_state.history = []  # list of {"role": ..., "content": ...}
+    st.session_state.history = []
 
 # Show previous messages
 for msg in st.session_state.history:
     with st.chat_message("user" if msg["role"] == "user" else "assistant"):
         st.markdown(msg["content"])
 
-# Chat input
+# ---------- CHAT INPUT ----------
 user_input = st.chat_input("Type your health question…")
 
 if user_input:
-    # Add user message
+    # 1. Add User Message
     st.session_state.history.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
         st.markdown(user_input)
 
-    # Call Groq
-    reply = call_groq(st.session_state.history)
+    # 2. Get AI Response
+    with st.spinner("Dr. Bittu is diagnosing..."):
+        reply = call_groq(st.session_state.history)
 
-    # Add bot message
+    # 3. Add Assistant Message
     st.session_state.history.append({"role": "assistant", "content": reply})
     with st.chat_message("assistant"):
         st.markdown(reply)
+
 
 
