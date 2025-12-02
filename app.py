@@ -310,7 +310,7 @@ def call_groq(history):
         completion = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=messages,
-            temperature=0.5,
+            temperature=0.4,
         )
         reply = completion.choices[0].message.content
     except Exception as e:
@@ -332,15 +332,15 @@ st.markdown(
         padding-bottom: 25px;
     }
     .title-container h1 {
-        font-size: 3rem;       
-        font-weight: 700;
+        font-size: 2rem;       
+        font-weight: 550;
         margin-bottom: 0px;   
         line-height: 1.0;      
         color: white;
     }
     .title-container h3 {
-        font-size: 1.2rem;     
-        font-weight: 300;
+        font-size: 1 rem;     
+        font-weight: 250;
         margin-top: -10px;    
         color: #b0b0b0;
     }
@@ -380,6 +380,7 @@ if user_input:
     st.session_state.history.append({"role": "assistant", "content": reply})
     with st.chat_message("assistant"):
         st.markdown(reply)
+
 
 
 
