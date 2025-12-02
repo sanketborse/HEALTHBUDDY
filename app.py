@@ -339,7 +339,7 @@ st.markdown(
         color: white;
     }
     .title-container h3 {
-        font-size: 1 rem;     
+        font-size: 0.4rem;     
         font-weight: 250;
         margin-top: -10px;    
         color: #b0b0b0;
@@ -380,6 +380,7 @@ if user_input:
     st.session_state.history.append({"role": "assistant", "content": reply})
     with st.chat_message("assistant"):
         st.markdown(reply)
+
 
 
 
