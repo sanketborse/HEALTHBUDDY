@@ -320,7 +320,7 @@ def call_groq(history):
 
 
 # ---------- STREAMLIT UI ----------
-st.set_page_config(page_title="HEALTHBUDDY", page_icon="🩺")
+st.set_page_config(page_title="healthbuddy", page_icon="🩺")
 
 # --- CUSTOM CSS FOR CENTERED TITLE ---
 # Replaces st.title() and st.subheader() with a centered HTML block
@@ -347,7 +347,7 @@ st.markdown(
     </style>
     
     <div class="title-container">
-        <h1>🩺 DR.BITTU</h1>
+        <h1>🩺 HEALTHBUDDY</h1>
         <h3>Caring for You, Naturally</h3>
     </div>
     """,
@@ -380,6 +380,7 @@ if user_input:
     st.session_state.history.append({"role": "assistant", "content": reply})
     with st.chat_message("assistant"):
         st.markdown(reply)
+
 
 
 
