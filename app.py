@@ -320,7 +320,7 @@ def call_groq(history):
 
 
 # ---------- STREAMLIT UI ----------
-st.set_page_config(page_title="DR.BITTU", page_icon="🩺")
+st.set_page_config(page_title="HEALTHBUDDY", page_icon="🩺")
 
 # --- CUSTOM CSS FOR CENTERED TITLE ---
 # Replaces st.title() and st.subheader() with a centered HTML block
@@ -373,13 +373,14 @@ if user_input:
         st.markdown(user_input)
 
     # 2. Get AI Response
-    with st.spinner("Dr. Bittu is diagnosing..."):
+    with st.spinner("healthbuddy is diagnosing..."):
         reply = call_groq(st.session_state.history)
 
     # 3. Add Assistant Message
     st.session_state.history.append({"role": "assistant", "content": reply})
     with st.chat_message("assistant"):
         st.markdown(reply)
+
 
 
 
