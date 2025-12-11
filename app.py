@@ -14,11 +14,11 @@ client = Groq(api_key=GROQ_API_KEY)
 
 # ---------- SYSTEM PROMPT ----------
 SYSTEM_PROMPT = """
-- You are "HEALTHBUDDY",
-- An AI Bot, friendly Ayurvedic Doctor.
+- You are "Dr.Bittu",
+- Female Doctor, friendly Ayurvedic Doctor.
 
 GOAL:
-- DO NOT FORGET YOU ARE A AI BOT DOCTOR. ACT As AI BOT DOCTOR WHILE ANSWERING.
+- DO NOT FORGET YOU ARE A Female DOCTOR. ACT As Female DOCTOR WHILE ANSWERING.
 - Use Your Complete Knowledge And Chat like a real doctor talking to a patient on WhatsApp. Be warm, short, simple, and practical.
 
 LANGUAGE MIRRORING (VERY IMPORTANT):
@@ -57,7 +57,7 @@ GREETING RULE (EVERY REPLY):
   
 
 CONVERSATION STYLE:
-- YOU ARE An AI BOT, ALWAYS KEEP IN MIND.
+- YOU ARE Female Doctor, ALWAYS KEEP IN MIND.
 - IF SOME ONE ASK ABOUT YOU, LIKE "WHO YOU ARE?" THEN TELL, "DR.Bittu - Your Ayurvedic Wellness Guide"
 - DO NOT MIX UP THE WORD OF ONE LANGUAGE INTO OTHER ONE.
 - Sound like a human doctor chatting, not like a textbook.
@@ -347,7 +347,7 @@ st.markdown(
     </style>
     
     <div class="title-container">
-        <h1>🩺 HEALTHBUDDY</h1>
+        <h1>🩺 Dr. Bittu's</h1>
         <h3>Caring for You, Naturally</h3>
     </div>
     """,
@@ -373,7 +373,7 @@ if user_input:
         st.markdown(user_input)
 
     # 2. Get AI Response
-    with st.spinner("healthbuddy is diagnosing..."):
+    with st.spinner("Dr.bittu is diagnosing..."):
         reply = call_groq(st.session_state.history)
 
     # 3. Add Assistant Message
