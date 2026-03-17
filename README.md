@@ -1,129 +1,201 @@
-# 🌿 HealthBuddy
+# 🩺 HealthBuddy – AI Health Assistant
 
-### Your AI-Powered Ayurvedic Wellness Guide
+HealthBuddy is a conversational AI health assistant built using **Streamlit** and **Groq LLM API**.
+It allows users to ask health-related questions and receive simple, practical wellness guidance in a conversational chat interface.
 
-  
+The assistant supports **multiple languages** (English, Hindi, Marathi, and Hinglish) and mirrors the user’s language style automatically.
 
-**HealthBuddy** is an advanced conversational AI application designed to simulate a consultation with a Senior Ayurvedic Physician. Powered by the **Groq API** and **LLaMA 3.1**, the app introduces users to **"Dr. Bittu"**, an empathetic and knowledgeable AI doctor who provides personalized diagnoses, dietary advice, and classical Ayurvedic prescriptions.
+HealthBuddy focuses on **basic health awareness, lifestyle guidance, and wellness suggestions** in a friendly chat format.
 
------
+---
 
-## 🚀 Features
+# 🚀 Features
 
-  * **🩺 Authentic Ayurvedic Persona:** Interacts as "Dr. Bittu," a warm, female Ayurvedic doctor with 40+ years of clinical experience.
-  * **🗣️ Multilingual & Code-Switching:** Seamlessly understands and replies in:
-      * **English**
-      * **Hindi** (Devanagari)
-      * **Marathi**
-      * **Hinglish** (Hindi + English mix)
-  * **💊 Clinical Prescriptions:** Unlike basic chatbots that offer kitchen remedies, HealthBuddy prescribes specific classical formulations (e.g., *Chandraprabha Vati*, *Ashokarishta*, *Suvarna Bhasma*) based on symptoms.
-  * **⚡ Ultra-Fast Inference:** Built on **Groq**, ensuring real-time responses with zero lag.
-  * **🎨 Clean UI:** Features a custom-styled, centered interface built with Streamlit for a focused user experience.
+### 🧠 AI-Powered Health Chat
 
------
+Users can ask health-related questions and receive helpful responses powered by an LLM.
 
-## 🛠️ Tech Stack
+### 🌍 Multilingual Support
 
-  * **Frontend:** [Streamlit](https://streamlit.io/)
-  * **LLM Engine:** [Groq API](https://groq.com/) (Model: `llama-3.1-8b-instant`)
-  * **Language:** Python 3.10+
-  * **Environment Management:** Python-dotenv
+The assistant automatically detects and replies in:
 
------
+* English
+* Hindi
+* Marathi
+* Hinglish (Hindi + English mix)
 
-## ⚙️ Installation & Setup
+### 💬 Conversational Interface
 
-Follow these steps to run HealthBuddy locally on your machine.
+Built with **Streamlit Chat UI**, making the interaction simple and natural.
 
-### 1\. Clone the Repository
+### 🩺 Wellness-Focused Guidance
 
-```bash
-git clone https://github.com/your-username/HealthBuddy.git
-cd HealthBuddy
+HealthBuddy provides suggestions related to:
+
+* digestion
+* sleep
+* stress
+* lifestyle
+* diet
+* general wellness
+
+### 🔒 Environment-Based API Keys
+
+API keys are stored securely using `.env`.
+
+---
+
+# 🏗️ Tech Stack
+
+| Technology | Purpose                         |
+| ---------- | ------------------------------- |
+| Python     | Core programming language       |
+| Streamlit  | Web interface                   |
+| Groq API   | LLM inference                   |
+| dotenv     | Environment variable management |
+
+---
+
+# 📂 Project Structure
+
+```
+healthbuddy/
+│
+├── app.py            # Main Streamlit application
+├── .env              # Environment variables (API key)
+├── requirements.txt  # Project dependencies
+└── README.md         # Project documentation
 ```
 
-### 2\. Create a Virtual Environment (Optional but Recommended)
+---
+
+# ⚙️ Installation
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/yourusername/healthbuddy.git
+cd healthbuddy
+```
+
+---
+
+### 2️⃣ Create a virtual environment
 
 ```bash
 python -m venv venv
-# Windows
+```
+
+Activate it:
+
+**Windows**
+
+```bash
 venv\Scripts\activate
-# Mac/Linux
+```
+
+**Mac / Linux**
+
+```bash
 source venv/bin/activate
 ```
 
-### 3\. Install Dependencies
+---
+
+### 3️⃣ Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4\. Set Up API Keys
+---
 
-Create a `.env` file in the root directory and add your Groq API key:
+### 4️⃣ Add Groq API Key
 
-```bash
-GROQ_API_KEY=your_groq_api_key_here
+Create a `.env` file in the project root:
+
+```
+GROQ_API_KEY=your_api_key_here
 ```
 
-*(You can get a free API key from [console.groq.com](https://console.groq.com))*
+You can get an API key from:
 
-### 5\. Run the Application
+https://console.groq.com
+
+---
+
+# ▶️ Running the Application
+
+Start the Streamlit server:
 
 ```bash
 streamlit run app.py
 ```
 
------
+The app will open in your browser:
 
-## 📂 Project Structure
-
-```text
-HealthBuddy/
-│
-├── app.py                # Main application file
-├── .env                  # API Key configuration (hidden from git)
-├── requirements.txt      # List of dependencies
-└── README.md             # Project documentation
+```
+http://localhost:8501
 ```
 
------
+---
 
-## 📸 Usage Examples
+# 💬 Example Usage
 
-**User (Hinglish):**
+User:
 
-> "Pet me gas ban rahi hai aur chest burn ho raha hai."
+```
+I have acidity after eating spicy food. What should I do?
+```
 
-**Dr. Bittu (Response):**
+HealthBuddy:
 
-> "नमस्ते, आपको 'अम्लपित्त' (Acidity) की समस्या है। घबराएं नहीं।
->
-> **ये दवाएं शुरू करें:**
->
-> 1.  **Avipattikar Churna:** 1 चम्मच सोने से पहले गर्म पानी के साथ।
-> 2.  **Sutshekhar Ras:** 1 गोली सुबह-शाम शहद के साथ।
->
-> मिर्च-मसाला और चाय बिल्कुल बंद कर दें।"
+```
+Acidity after spicy food is quite common. It usually happens when the stomach produces excess acid.
 
------
+You can try:
+• Eating lighter meals
+• Avoiding very spicy or oily foods at night
+• Drinking warm water after meals
+• Not lying down immediately after eating
 
-## ⚠️ Disclaimer
+Does the acidity happen daily or only after certain foods?
+```
 
-This project is for **educational and demonstration purposes only**. The medical advice provided by the AI ("Dr. Bittu") is generated by a language model and should not replace professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified health provider with any questions you may have regarding a medical condition.
+---
 
------
+# ⚠️ Disclaimer
 
-## 🤝 Contributing
+HealthBuddy provides **general health and wellness information only**.
 
-Contributions are welcome\! Feel free to fork the repo and submit a pull request.
+It is **not a substitute for professional medical advice, diagnosis, or treatment**.
+Always consult a qualified healthcare professional for medical concerns.
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+---
 
------
+# 🌟 Future Improvements
 
-### ❤️ Built with Python & Streamlit
+Planned upgrades include:
+
+* symptom triage system
+* patient profile memory
+* emergency symptom detection
+* medical knowledge grounding
+* mobile-friendly UI
+* deployment on cloud platforms
+
+---
+
+# 👨‍💻 Author
+
+**Sanket Borse**
+
+---
+
+# ⭐ Support
+
+If you like this project:
+
+⭐ Star the repository
+🍴 Fork the project
+🚀 Contribute improvements
